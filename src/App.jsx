@@ -18,7 +18,14 @@ import NotFound from "./pages/NotFound.jsx";
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
-    if (hash) return; // let in-page anchor links (e.g. #products) behave normally
+    if (hash) {
+      const targetId = hash.replace("#", "");
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        elem.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+    }
     window.scrollTo(0, 0);
   }, [pathname, hash]);
   return null;

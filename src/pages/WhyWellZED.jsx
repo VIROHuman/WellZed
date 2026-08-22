@@ -29,7 +29,16 @@ export default function WhyWellZED() {
             </p>
             <div className="btn-row mt-24">
               <Link to={CTA.primary.to} className="btn btn-dark">{CTA.primary.label}</Link>
-              <Link to="#ownership" className="btn btn-outline">See how ownership works</Link>
+              <a
+                href="#ownership"
+                className="btn btn-outline"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("ownership")?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                See how ownership works
+              </a>
             </div>
             <div className="grid grid-3 mt-32">
               <div style={{ borderTop: "2px solid var(--gold-500)", paddingTop: 10 }}>
@@ -74,35 +83,50 @@ export default function WhyWellZED() {
           </div>
 
           <div className="grid grid-3">
-            <div className="card" style={{ background: "var(--white)", color: "var(--ink)" }}>
+            <div className="card" style={{ background: "var(--white)", color: "var(--ink)", display: "flex", flexDirection: "column" }}>
               <Eyebrow>Yours</Eyebrow>
               <h3 className="mt-16">Your organisation keeps control.</h3>
               <ul className="badge-list mt-24">
                 {OWNERSHIP_YOURS.map((o) => (
                   <li key={o.title}>
                     <span className="check">✓</span>
-                    <span><strong>{o.title}</strong><br /><span style={{ color: "var(--ink-soft)" }}>{o.detail}</span></span>
+                    <div>
+                      <strong style={{ display: "block", color: "var(--ink)", marginBottom: "3px" }}>{o.title}</strong>
+                      <span style={{ color: "var(--ink-soft)", fontSize: "0.9rem", lineHeight: "1.45" }}>{o.detail}</span>
+                    </div>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="card card--dark">
+            <div className="card card--dark" style={{ display: "flex", flexDirection: "column" }}>
               <Eyebrow>WellZED retains</Eyebrow>
               <h3 className="mt-16">Reusable capability stays reusable.</h3>
               <ul className="badge-list mt-24">
                 {OWNERSHIP_WELLZED_RETAINS.map((o) => (
-                  <li key={o}><span className="check">•</span><span>{o}</span></li>
+                  <li key={o.title}>
+                    <span className="check" style={{ fontSize: "1.1rem", lineHeight: "0" }}>•</span>
+                    <div>
+                      <strong style={{ display: "block", color: "var(--white)", marginBottom: "3px" }}>{o.title}</strong>
+                      <span style={{ color: "var(--text-on-dark-soft)", fontSize: "0.9rem", lineHeight: "1.45" }}>{o.detail}</span>
+                    </div>
+                  </li>
                 ))}
               </ul>
             </div>
 
-            <div className="card" style={{ background: "var(--gold-500)", color: "var(--navy-900)" }}>
+            <div className="card" style={{ background: "var(--gold-500)", color: "var(--navy-900)", display: "flex", flexDirection: "column" }}>
               <span className="eyebrow" style={{ color: "var(--navy-900)" }}>Third parties</span>
-              <h3 className="mt-16">Their rights remain theirs.</h3>
+              <h3 className="mt-16" style={{ color: "var(--navy-900)" }}>Their rights remain theirs.</h3>
               <ul className="badge-list mt-24">
                 {OWNERSHIP_THIRD_PARTIES.map((o) => (
-                  <li key={o} style={{ color: "rgba(10,30,51,0.8)" }}><span className="check" style={{ background: "var(--navy-900)", color: "var(--gold-400)" }}>•</span><span>{o}</span></li>
+                  <li key={o.title} style={{ color: "var(--navy-900)" }}>
+                    <span className="check" style={{ background: "var(--navy-900)", color: "var(--gold-400)", fontSize: "1.1rem", lineHeight: "0" }}>•</span>
+                    <div>
+                      <strong style={{ display: "block", color: "var(--navy-900)", marginBottom: "3px" }}>{o.title}</strong>
+                      <span style={{ color: "rgba(10,30,51,0.85)", fontSize: "0.9rem", lineHeight: "1.45" }}>{o.detail}</span>
+                    </div>
+                  </li>
                 ))}
               </ul>
             </div>

@@ -181,7 +181,7 @@
   grid-template-columns: 1.1fr 0.9fr;
   gap: 48px;
   align-items: center;
-  padding: clamp(56px, 9vw, 96px) 0 clamp(48px, 7vw, 76px);
+  padding: clamp(16px, 3vw, 36px) 0 clamp(20px, 4vw, 40px);
 }
 
 .hero h1 { font-size: clamp(2.2rem, 4vw, 3.4rem); }
@@ -205,7 +205,10 @@
 /* ---------- Orbit signature element (Home hero) ---------- */
 .orbit {
   position: relative;
-  height: 460px;
+  width: 100%;
+  max-width: 480px;
+  height: 480px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -213,17 +216,19 @@
 
 .orbit__ring {
   position: absolute;
-  inset: 6%;
-  border: 1px solid var(--navy-line);
+  width: 380px;
+  height: 380px;
+  border: 1.5px solid var(--navy-line);
   border-radius: 50%;
+  pointer-events: none;
 }
 
 .orbit__center {
   position: relative;
   z-index: 3;
-  width: 190px;
-  height: 190px;
-  border-radius: 28px;
+  width: 204px;
+  height: 204px;
+  border-radius: 26px;
   background: var(--white);
   color: var(--navy-900);
   display: flex;
@@ -231,36 +236,40 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 6px;
-  padding: 20px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  gap: 8px;
+  padding: 20px 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   animation: orbit-float 7s ease-in-out infinite;
 }
 
-.orbit__center-title { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; }
-.orbit__center-sub { font-size: 0.78rem; color: var(--ink-soft); }
+.orbit__center-title { font-family: var(--font-display); font-weight: 600; font-size: 1.28rem; line-height: 1.25; }
+.orbit__center-sub { font-size: 0.8rem; color: var(--ink-soft); white-space: nowrap; }
 
 .orbit__node {
   position: absolute;
   width: 168px;
+  min-height: 84px;
   background: var(--navy-600);
   border: 1px solid var(--navy-line);
   border-radius: 16px;
-  padding: 16px 18px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
   z-index: 2;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   animation: orbit-float 7s ease-in-out infinite;
 }
 
 .orbit__node strong { color: var(--white); font-size: 0.92rem; font-family: var(--font-sans); }
-.orbit__node span { color: var(--text-on-dark-soft); font-size: 0.78rem; line-height: 1.4; }
+.orbit__node span { color: var(--text-on-dark-soft); font-size: 0.78rem; line-height: 1.35; }
 
-.orbit__node--tl { top: 6%; left: 2%; animation-delay: 0.4s; }
-.orbit__node--tr { top: 14%; right: 0%; animation-delay: 1s; }
-.orbit__node--bl { bottom: 10%; left: 6%; animation-delay: 1.6s; }
-.orbit__node--br { bottom: 2%; right: 4%; animation-delay: 0.8s; }
+/* Symmetrical 4-quadrant placement along the orbit ring */
+.orbit__node--tl { top: 6%; left: 0%; animation-delay: 0.4s; }
+.orbit__node--tr { top: 6%; right: 0%; animation-delay: 1.2s; }
+.orbit__node--bl { bottom: 6%; left: 0%; animation-delay: 2s; }
+.orbit__node--br { bottom: 6%; right: 0%; animation-delay: 0.8s; }
 
 @keyframes orbit-float {
   0%, 100% { transform: translateY(0); }
@@ -268,16 +277,26 @@
 }
 
 @media (max-width: 900px) {
-  .orbit { height: 380px; margin-top: 12px; }
-  .orbit__node { width: 132px; padding: 12px 14px; }
-  .orbit__center { width: 150px; height: 150px; }
+  .orbit { max-width: 380px; height: 380px; margin-top: 16px; }
+  .orbit__ring { width: 300px; height: 300px; }
+  .orbit__center { width: 140px; height: 140px; border-radius: 20px; padding: 14px; }
+  .orbit__center-title { font-size: 1rem; }
+  .orbit__center-sub { font-size: 0.72rem; }
+  .orbit__node { width: 135px; min-height: 72px; padding: 10px 12px; }
+  .orbit__node strong { font-size: 0.84rem; }
+  .orbit__node span { font-size: 0.72rem; }
+  .orbit__node--tl { top: 2%; left: -2%; }
+  .orbit__node--tr { top: 2%; right: -2%; }
+  .orbit__node--bl { bottom: 2%; left: -2%; }
+  .orbit__node--br { bottom: 2%; right: -2%; }
 }
 
 @media (max-width: 560px) {
-  .orbit__node--tl { left: -2%; }
-  .orbit__node--tr { right: -4%; }
-  .orbit__node--bl { left: -2%; }
-  .orbit__node--br { right: -2%; }
+  .orbit { max-width: 320px; height: 320px; }
+  .orbit__ring { width: 250px; height: 250px; }
+  .orbit__center { width: 120px; height: 120px; border-radius: 16px; padding: 10px; }
+  .orbit__center-title { font-size: 0.9rem; }
+  .orbit__node { width: 118px; min-height: 64px; padding: 8px 10px; border-radius: 12px; }
 }
 
 /* ---------- Simple page hero (inner pages) ---------- */
@@ -304,7 +323,6 @@
 }
 .section--dark .numbered-row, .section--navy-mid .numbered-row { border-top-color: var(--navy-line); }
 
-.numbered-row:last-child { }
 
 .numbered-row__n {
   font-family: var(--font-mono);
@@ -331,7 +349,7 @@
   color: var(--ink-soft);
 }
 
-.section--dark .tag, .section--navy-mid .tag {
+.section--dark .tag, .section--navy-mid .tag, .card--dark .tag {
   border-color: var(--navy-line);
   color: var(--text-on-dark);
 }
@@ -537,8 +555,21 @@
   margin-bottom: 16px;
 }
 
-.badge-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
-.badge-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.94rem; }
+.badge-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.badge-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
 .badge-list .check {
   flex-shrink: 0;
   width: 20px;
@@ -549,6 +580,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
-  margin-top: 2px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-top: 1px;
+  line-height: 1;
+}
+.badge-list li > div,
+.badge-list li > span:not(.check) {
+  flex: 1;
 }

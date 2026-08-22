@@ -190,17 +190,17 @@ export const OWNERSHIP_YOURS = [
 ];
 
 export const OWNERSHIP_WELLZED_RETAINS = [
-  "Pre-existing frameworks and libraries.",
-  "Reusable components and generic technology.",
-  "Methods, know-how and generalised improvements.",
-  "Anything that can be reused without exposing client confidential information or proprietary business IP.",
+  { title: "Frameworks & core libraries", detail: "Pre-existing underlying code, foundational libraries and architecture." },
+  { title: "Reusable components", detail: "Generic building blocks, UI patterns and standard functional modules." },
+  { title: "Methods & know-how", detail: "Generalised improvements, development techniques and operational expertise." },
+  { title: "Non-confidential IP", detail: "Capabilities that can be reused without exposing client data or confidential IP." },
 ];
 
 export const OWNERSHIP_THIRD_PARTIES = [
-  "Cloud services.",
-  "Commercial software.",
-  "AI and API services.",
-  "Open-source components remain subject to their licences.",
+  { title: "Cloud infrastructure", detail: "Hosting, cloud storage, database services and serverless runtimes." },
+  { title: "Commercial software", detail: "Licensed third-party platforms, tools and vendor subscriptions." },
+  { title: "AI & external APIs", detail: "Third-party AI models, external integrations and data providers." },
+  { title: "Open-source libraries", detail: "Open-source components remain subject to their respective open licenses." },
 ];
 
 export const HOW_WE_BEHAVE = [

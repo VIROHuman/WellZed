@@ -121,7 +121,18 @@ export default function HowWeWork() {
               <h3 className="mt-16">Before Build, we agree:</h3>
               <div className="grid grid-2 mt-24">
                 {DECISION_GATE_ITEMS.map((item) => (
-                  <div key={item} className="tag" style={{ background: "var(--navy-600)", justifyContent: "flex-start" }}>{item}</div>
+                  <div
+                    key={item}
+                    className="tag"
+                    style={{
+                      background: "rgba(255, 255, 255, 0.08)",
+                      borderColor: "rgba(255, 255, 255, 0.16)",
+                      color: "var(--white)",
+                      justifyContent: "flex-start",
+                    }}
+                  >
+                    {item}
+                  </div>
                 ))}
               </div>
             </div>
